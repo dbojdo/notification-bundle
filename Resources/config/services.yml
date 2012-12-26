@@ -1,0 +1,7 @@
+parameters:
+#    webit_notification.example.class: Webit\Bundle\NotificationBundle\Example
+
+services:
+#    webit_notification.example:
+#        class: %webit_notification.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
