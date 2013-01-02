@@ -19,7 +19,27 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('webit_notification');
-
+				$rootNode
+					->children()
+						->scalarNode('sms_sender')->end()
+						->scalarNode('templates_path_prefix')->defaultValue('@WebitNotificationBundle:notifications:')->end()
+						->arrayNode('notifications')
+							->useAttributeAsKey('type')
+							->prototype('array')
+								->children()
+									->scalarNode('interval')->end()
+									->scalarNode('recipients_provider')->end()
+									->arrayNode('active')
+											->children()
+												->scalarNode('sms')->defaultFalse()->end()
+												->scalarNode('email')->defaultTrue()->end()
+											->end()
+									->end()
+								->end()
+						->end()
+					->end()
+				->end();
+						
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.

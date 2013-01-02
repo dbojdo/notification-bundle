@@ -1,7 +1,49 @@
 parameters:
-#    webit_notification.example.class: Webit\Bundle\NotificationBundle\Example
-
+    webit_notification.registry_factory.class: Webit\Bundle\NotificationBundle\Notification\Registry\NotificationRegistryFactory
+    webit_notification.registry.class: Webit\Bundle\NotificationBundle\Notification\Registry\NotificationRegistry
+    webit_notification.notifier.class: Webit\Bundle\NotificationBundle\Notification\Notifier
+    webit_notification.sms_notifier.class: Webit\Bundle\NotificationBundle\Notification\Sms\SmsNotifier
+    webit_notification.email_notifier.class: Webit\Bundle\NotificationBundle\Notification\Email\EmailNotifier
+    webit_notification.email_message_factory.class: Webit\Bundle\NotificationBundle\Notification\Email\MessageFactory 
+    webit_notification.notification_post_send_log_listener.class: Webit\Bundle\NotificationBundle\Listeners\PostSendListener
+    webit_notification.notification_send_cancel_checker_listener.class: Webit\Bundle\NotificationBundle\Listeners\SendCancelCheckerListener
+    
 services:
-#    webit_notification.example:
-#        class: %webit_notification.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    webit_notification.registry_factory:
+        class: %webit_notification.registry_factory.class%
+        calls:
+            - [setContainer, [@service_container]]
+    webit_notification.registry:
+        class: %webit_notification.registry.class%
+        factory_service: webit_notification.registry_factory   
+        factory_method: get
+        arguments: [%webit_notification.registry.class%]
+    webit_notification.notifier:
+        class: %webit_notification.notifier.class%
+        calls:
+            - [setContainer, [@service_container]]
+    webit_notification.sms_notifier:
+        class: %webit_notification.sms_notifier.class%
+        calls:
+            - [setContainer, [@service_container]]
+    webit_notification.email_message_factory:
+        class: %webit_notification.email_message_factory.class%
+        calls:
+            - [setContainer, [@service_container]]
+    webit_notification.email_notifier:
+        class: %webit_notification.email_notifier.class%
+        arguments: [@mailer,@webit_notification.email_message_factory]
+        calls:
+            - [setContainer, [@service_container]]
+    webit_notification.notification_send_cancel_checker_listener:
+        class: %webit_notification.notification_send_cancel_checker_listener.class%
+        calls:
+            - [setContainer, [@service_container]]
+        tags:
+            - { name: kernel.event_listener, event: webit_notification.pre_send, method: onPreSend }
+    webit_notification.notification_post_send_log_listener:
+        class: %webit_notification.notification_post_send_log_listener.class%
+        calls:
+            - [setContainer, [@service_container]]
+        tags:
+            - { name: kernel.event_listener, event: webit_notification.post_send, method: onPostSend }
