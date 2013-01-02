@@ -7,8 +7,8 @@ use Webit\Bundle\NotificationBundle\Notification\NotifierInterface;
 
 class Notifier extends ContainerAware implements NotifierInterface {
 	public function sendNotification(NotificationInterface $notification) {
-		//$smsNotifier = $this->container->get('webit_notification.sms_notifier');
-		//$smsNotifier->sendNotification($notification);
+		$smsNotifier = $this->container->get('webit_notification.sms_notifier');
+		$smsNotifier->sendNotification($notification);
 		
 		$emailNotifier = $this->container->get('webit_notification.email_notifier');
 		$emailNotifier->sendNotification($notification);
