@@ -49,6 +49,7 @@ class SendCancelCheckerListener extends ContainerAware {
 		$qb = $this->container->get('doctrine.orm.entity_manager')->getRepository('WebitNotificationBundle:NotificationLog')->createQueryBuilder('n');
 		$qb->where($qb->expr()->eq('n.hash',$qb->expr()->literal($hash)));
 		$qb->andWhere($qb->expr()->like('n.recipient',$qb->expr()->literal($to)));
+		$qb->orderBy('n.sentAt','DESC')->setMaxResults(1);
 		
 		$lastDate = $qb->getQuery()->getOneOrNullResult();
 		if($lastDate) {
