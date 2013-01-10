@@ -29,6 +29,22 @@ class PostSendListener extends ContainerAware {
 				$em->flush();
 			}
 		}
+			if($event->getMedia() == 'email') {
+			$this->flushQueue();
+		}
+	}
+	
+	private function flushQueue() {
+		if($this->container->isScopeActive('request')) {
+			return;
+		}
+		
+		$mailer = $this->container->get('mailer');
+		$transport = $mailer->getTransport();
+		if ($transport instanceof \Swift_Transport_SpoolTransport) {
+			$spool = $transport->getSpool();
+			$sent = $spool->flushQueue($this->container->get('swiftmailer.transport.real'));
+		}
 	}
 	
 	private function getRecipientInfo(RecipientInterface $recipient, $media) {
