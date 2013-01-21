@@ -22,6 +22,8 @@ class WebitNotificationExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
         
+        $container->setParameter('webit_notification.default_scheme',$config['default_scheme']);
+        $container->setParameter('webit_notification.default_host',$config['default_host']);
         $container->setParameter('webit_notification.sms_sender', $config['sms_sender']);
         $container->setParameter('webit_notification.notifications', $config['notifications']);
         $container->setParameter('webit_notification.templates_path_prefix', $config['templates_path_prefix']);
