@@ -22,6 +22,7 @@ services:
         class: %webit_notification.notifier.class%
         calls:
             - [setContainer, [@service_container]]
+            - [setRouterContext, [%webit_notification.default_host%, %webit_notification.default_scheme%]]
     webit_notification.sms_notifier:
         class: %webit_notification.sms_notifier.class%
         calls:

@@ -21,6 +21,8 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('webit_notification');
 				$rootNode
 					->children()
+					  ->scalarNode('default_scheme')->defaultValue('http')->end()
+					  ->scalarNode('default_host')->end()
 						->scalarNode('sms_sender')->end()
 						->scalarNode('templates_path_prefix')->defaultValue('@WebitNotificationBundle:notifications:')->end()
 						->arrayNode('notifications')
