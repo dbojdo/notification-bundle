@@ -20,7 +20,7 @@ class ToggleStatusCommand extends ContainerAwareCommand {
 		parent::configure();
 		
 		$this->setName('webit:notification:toggle-status')
-			->setDescription('Check notifications status');
+			->setDescription('Checks notifications\' status');
 	}
 	
 	protected function initialize(InputInterface $input, OutputInterface $output) {

@@ -20,7 +20,7 @@ class ToggleNotificationCommand extends ContainerAwareCommand {
 		parent::configure();
 		
 		$this->setName('webit:notification:toggle')
-			->setDescription('Calculate models\' values');
+			->setDescription('Enable or disable notifications');
 		
 		$this->addArgument('enable',InputArgument::REQUIRED,'Enable or disable notifications');
 		$this->addArgument('toggleTo',InputArgument::OPTIONAL,'Toggle "to" date');
