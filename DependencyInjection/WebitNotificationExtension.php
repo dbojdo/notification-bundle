@@ -30,5 +30,12 @@ class WebitNotificationExtension extends Extension
         
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+        
+        $this->completeToggleDefinition($container, $config['toggle']);
+    }
+    
+    private function completeToggleDefinition(ContainerBuilder $container, array $toggleConfig) {
+    	$toggle = $container->getDefinition('webit_notification.toggle_service.lock_file');
+    	$toggle->addArgument($toggleConfig['lock_file'], $toggleConfig['default']);
     }
 }

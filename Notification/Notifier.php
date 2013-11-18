@@ -7,11 +7,20 @@ use Webit\Bundle\NotificationBundle\Notification\NotifierInterface;
 
 class Notifier extends ContainerAware implements NotifierInterface {
 	public function sendNotification(NotificationInterface $notification) {
+		if($isNotificationEnabled == false) {
+			return null;
+		}
+		
 		$smsNotifier = $this->container->get('webit_notification.sms_notifier');
 		$smsNotifier->sendNotification($notification);
 		
 		$emailNotifier = $this->container->get('webit_notification.email_notifier');
 		$emailNotifier->sendNotification($notification);
+	}
+	
+	private function isNotificationEnabled() {
+		$toggle = $this->container->get('webit_notification.toggle_service');
+		return $toggle->isEnabled();
 	}
 	
 	public function setRouterContext($host, $scheme='http') {
