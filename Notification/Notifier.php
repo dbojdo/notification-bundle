@@ -7,7 +7,7 @@ use Webit\Bundle\NotificationBundle\Notification\NotifierInterface;
 
 class Notifier extends ContainerAware implements NotifierInterface {
 	public function sendNotification(NotificationInterface $notification) {
-		if($isNotificationEnabled == false) {
+		if($this->isNotificationEnabled() == false) {
 			return null;
 		}
 		
