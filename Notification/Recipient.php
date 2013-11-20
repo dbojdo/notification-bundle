@@ -16,6 +16,12 @@ class Recipient implements RecipientInterface {
 	 */
 	protected $name;
 	
+	/**
+	 * 
+	 * @var string
+	 */
+	protected $phoneNo;
+	
 	public function __construct($email = null, $name = null) {
 		$this->email = $email;
 		$this->name = $name;
@@ -51,5 +57,21 @@ class Recipient implements RecipientInterface {
 	 */  
 	public function setName($name) {
 		$this->name = $name;
+	}
+	
+	/**
+	 * 
+	 * @return string
+	 */
+	public function getPhoneNo() {
+		return $this->phoneNo;
+	}
+	
+	/**
+	 * 
+	 * @param string $phoneNo
+	 */
+	public function setPhoneNo($phoneNo) {
+		$this->phoneNo = $phoneNo;
 	}
 }
