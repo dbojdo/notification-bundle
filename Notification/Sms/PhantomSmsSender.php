@@ -1,4 +1,5 @@
 <?php
+namespace Webit\Bundle\NotificationBundle\Notification\Sms;
 
 use Webit\Api\SmsCommon\Sender\SmsSenderInterface;
 use Webit\Api\SmsCommon\Message\SmsInterface;
