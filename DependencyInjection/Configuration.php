@@ -23,7 +23,7 @@ class Configuration implements ConfigurationInterface
 					->children()
 					  ->scalarNode('default_scheme')->defaultValue('http')->end()
 					  ->scalarNode('default_host')->end()
-						->scalarNode('sms_sender')->end()
+						->scalarNode('sms_sender')->defaultValue('webit_notification.sms_sender_phantom')->end()
 						->scalarNode('templates_path_prefix')->defaultValue('@WebitNotificationBundle:notifications:')->end()
 						->arrayNode('notifications')
 							->useAttributeAsKey('type')

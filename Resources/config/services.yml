@@ -3,6 +3,7 @@ parameters:
     webit_notification.registry_factory.class: Webit\Bundle\NotificationBundle\Notification\Registry\NotificationRegistryFactory
     webit_notification.registry.class: Webit\Bundle\NotificationBundle\Notification\Registry\NotificationRegistry
     webit_notification.notifier.class: Webit\Bundle\NotificationBundle\Notification\Notifier
+    webit_notification.sms_sender_phantom.class: Webit\Bundle\NotificationBundle\Notification\Sms\PhantomSmsSender
     webit_notification.sms_notifier.class: Webit\Bundle\NotificationBundle\Notification\Sms\SmsNotifier
     webit_notification.email_notifier.class: Webit\Bundle\NotificationBundle\Notification\Email\EmailNotifier
     webit_notification.email_message_factory.class: Webit\Bundle\NotificationBundle\Notification\Email\MessageFactory 
@@ -33,6 +34,8 @@ services:
         class: %webit_notification.sms_notifier.class%
         calls:
             - [setContainer, [@service_container]]
+    webit_notification.sms_sender_phantom:
+        class: %webit_notification.sms_sender_phantom.class%
     webit_notification.email_message_factory:
         class: %webit_notification.email_message_factory.class%
         calls:
