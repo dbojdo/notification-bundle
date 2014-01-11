@@ -32,14 +32,16 @@ class SendCancelCheckerListener extends ContainerAware {
 			return;
 		}
 		
-		$lastNotificationDate = $this->getLastNotificationDate($notification,$to);
-		$interval = new \DateInterval('PT'.$config->getInterval().'S');
-		$compareDate = new \DateTime();
-		$compareDate->sub($interval);
-		
-		if($lastNotificationDate && $lastNotificationDate->getTimestamp() >= $compareDate->getTimestamp()) {
-			$event->setCancel(true);
-			return;
+		if($config->getInterval() > 0) {
+			$lastNotificationDate = $this->getLastNotificationDate($notification,$to);
+			$interval = new \DateInterval('PT'.$config->getInterval().'S');
+			$compareDate = new \DateTime();
+			$compareDate->sub($interval);
+			
+			if($lastNotificationDate && $lastNotificationDate->getTimestamp() >= $compareDate->getTimestamp()) {
+				$event->setCancel(true);
+				return;
+			}
 		}
 	}
 	
