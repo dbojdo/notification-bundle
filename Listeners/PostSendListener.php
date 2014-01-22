@@ -55,6 +55,8 @@ class PostSendListener extends ContainerAware {
 			case 'email':
 				return $recipient->getEmail();
 			break;
+			case 'push':
+			    return $recipient->getUrl();
 		}
 		
 		return null;
