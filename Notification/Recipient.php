@@ -22,9 +22,10 @@ class Recipient implements RecipientInterface {
 	 */
 	protected $phoneNo;
 	
-	public function __construct($email = null, $name = null) {
+	public function __construct($email = null, $name = null, $phoneNo = null) {
 		$this->email = $email;
 		$this->name = $name;
+		$this->phoneNo = $phoneNo;
 	}
 	
 	/**

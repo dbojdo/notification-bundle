@@ -16,6 +16,9 @@ class Notifier extends ContainerAware implements NotifierInterface {
 		
 		$emailNotifier = $this->container->get('webit_notification.email_notifier');
 		$emailNotifier->sendNotification($notification);
+		
+		$pushNotifier = $this->container->get('webit_notification.push_notifier');
+		$pushNotifier->sendNotification($notification);
 	}
 	
 	private function isNotificationEnabled() {

@@ -20,6 +20,11 @@ class NotificationRegistryFactory extends ContainerAware  {
 				$config->setRecipientsProvider($provider);	
 			}
 			
+			if(key_exists('recipients_push_provider', $arNotification)) {
+			    $provider = $this->container->get($arNotification['recipients_push_provider']);
+			    $config->setRecipientsPushProvider($provider);
+			}
+			
 			if(key_exists('active', $arNotification)) {
 				foreach($arNotification['active'] as $media=>$active) {
 					$config->setActive($media, $active);

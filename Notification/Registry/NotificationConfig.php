@@ -2,6 +2,7 @@
 namespace Webit\Bundle\NotificationBundle\Notification\Registry;
 
 use Webit\Bundle\NotificationBundle\Notification\RecipientsProviderInterface;
+use Webit\Bundle\NotificationBundle\Notification\RecipientsProviderPushInterface;
 
 class NotificationConfig implements NotificationConfigInterface {
 	/**
@@ -18,12 +19,18 @@ class NotificationConfig implements NotificationConfigInterface {
 	/**
    * @var array
 	 */
-	protected $active = array('sms' => false, 'email' => true);
+	protected $active = array('sms' => false, 'email' => true, 'push'=>false);
 
 	/**
-   * @var RecipientProviderInterface
+     * @var RecipientProviderInterface
 	 */
 	protected $recipientsProvider;
+	
+	/**
+	 * 
+	 * @var RecipientsProviderPushInterface
+	 */
+	protected $recipientsPushProvider;
 	
 	public function __construct($type) {
 		$this->type = $type;
@@ -67,5 +74,24 @@ class NotificationConfig implements NotificationConfigInterface {
 	public function setRecipientsProvider(RecipientsProviderInterface $recipientsProvider) {
 		$this->recipientsProvider = $recipientsProvider;
 	}
+	
+	/**
+	 * 
+	 * @return RecipientsProviderPushInterface
+	 */
+	public function getRecipientsPushProvider() {
+	    return $this->recipientsPushProvider;
+	}
+	
+	/**
+	 * 
+	 * @param RecipientsProviderPushInterface $recipientPushProvider
+	 */
+	public function setRecipientsPushProvider(RecipientsProviderPushInterface $recipientsPushProvider) {
+	    $this->recipientsPushProvider = $recipientsPushProvider;
+	}
 }
 ?>
+
+
+
