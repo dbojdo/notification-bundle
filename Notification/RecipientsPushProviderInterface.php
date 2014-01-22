@@ -1,7 +1,7 @@
 <?php
 namespace Webit\Bundle\NotificationBundle\Notification;
 
-interface RecipientsProviderPushInterface {
+interface RecipientsPushProviderInterface {
 	public function getRecipients(NotificationInterface $notification);
 }
 ?>

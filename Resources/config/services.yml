@@ -6,7 +6,8 @@ parameters:
     webit_notification.sms_sender_phantom.class: Webit\Bundle\NotificationBundle\Notification\Sms\PhantomSmsSender
     webit_notification.sms_notifier.class: Webit\Bundle\NotificationBundle\Notification\Sms\SmsNotifier
     webit_notification.email_notifier.class: Webit\Bundle\NotificationBundle\Notification\Email\EmailNotifier
-    webit_notification.email_message_factory.class: Webit\Bundle\NotificationBundle\Notification\Email\MessageFactory 
+    webit_notification.email_message_factory.class: Webit\Bundle\NotificationBundle\Notification\Email\MessageFactory
+    webit_notification.push_notifier.class: Webit\Bundle\NotificationBundle\Notification\Push\PushNotifier 
     webit_notification.notification_post_send_log_listener.class: Webit\Bundle\NotificationBundle\Listeners\PostSendListener
     webit_notification.notification_send_cancel_checker_listener.class: Webit\Bundle\NotificationBundle\Listeners\SendCancelCheckerListener
     
@@ -43,6 +44,11 @@ services:
     webit_notification.email_notifier:
         class: %webit_notification.email_notifier.class%
         arguments: [@mailer,@webit_notification.email_message_factory]
+        calls:
+            - [setContainer, [@service_container]]
+    webit_notification.push_notifier:
+        class: %webit_notification.push_notifier.class%
+        arguments: [@buzz]
         calls:
             - [setContainer, [@service_container]]
     webit_notification.notification_send_cancel_checker_listener:

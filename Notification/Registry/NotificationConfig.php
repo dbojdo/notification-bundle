@@ -2,7 +2,7 @@
 namespace Webit\Bundle\NotificationBundle\Notification\Registry;
 
 use Webit\Bundle\NotificationBundle\Notification\RecipientsProviderInterface;
-use Webit\Bundle\NotificationBundle\Notification\RecipientsProviderPushInterface;
+use Webit\Bundle\NotificationBundle\Notification\RecipientsPushProviderInterface;
 
 class NotificationConfig implements NotificationConfigInterface {
 	/**
@@ -77,7 +77,7 @@ class NotificationConfig implements NotificationConfigInterface {
 	
 	/**
 	 * 
-	 * @return RecipientsProviderPushInterface
+	 * @return RecipientsPushProviderInterface
 	 */
 	public function getRecipientsPushProvider() {
 	    return $this->recipientsPushProvider;
@@ -85,9 +85,9 @@ class NotificationConfig implements NotificationConfigInterface {
 	
 	/**
 	 * 
-	 * @param RecipientsProviderPushInterface $recipientPushProvider
+	 * @param RecipientsPushProviderInterface $recipientPushProvider
 	 */
-	public function setRecipientsPushProvider(RecipientsProviderPushInterface $recipientsPushProvider) {
+	public function setRecipientsPushProvider(RecipientsPushProviderInterface $recipientsPushProvider) {
 	    $this->recipientsPushProvider = $recipientsPushProvider;
 	}
 }

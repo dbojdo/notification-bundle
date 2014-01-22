@@ -29,11 +29,10 @@ class PushNotifier extends ContainerAware implements NotifierInterface {
 		if($recipientsProvider == null) {
 		    return;
 		}
-		
+
 		foreach($recipientsProvider->getRecipients($notification) as $recipient) {
 			$event = new EventNotification($notification, $recipient, 'push');
 			$this->container->get('event_dispatcher')->dispatch(Events::EVENT_PRE_SEND,$event);
-			
 			if($event->getCancel() == true) {continue;};
 			
 			$result = $this->sendPush($recipient);
@@ -55,8 +54,12 @@ class PushNotifier extends ContainerAware implements NotifierInterface {
 	       $url .= ('?'.implode('&', $arQueryParams));    
 	    }
 	    
-	    $response = $this->buzz->submit($url, $recipient->getParams(), strtoupper($recipient->getMethod()));
-	    
+        try {
+	       $response = $this->buzz->submit($url, $recipient->getParams(), strtoupper($recipient->getMethod()));
+        } catch(\Exception $e) {
+            $response = false;
+        }
+        
 	    return $response;
 	}
 }

@@ -2,6 +2,7 @@
 namespace Webit\Bundle\NotificationBundle\Notification\Registry;
 
 use Webit\Bundle\NotificationBundle\Notification\RecipientsProviderInterface;
+use Webit\Bundle\NotificationBundle\Notification\RecipientsPushProviderInterface;
 
 interface NotificationConfigInterface {
 	public function getActive($media);
@@ -43,14 +44,14 @@ interface NotificationConfigInterface {
 	
 	/**
 	 *
-	 * @return RecipientsProviderPushInterface
+	 * @return RecipientsPushProviderInterface
 	 */
 	public function getRecipientsPushProvider();
 	
 	/**
 	 *
-	 * @param RecipientsProviderPushInterface $recipientPushProvider
+	 * @param RecipientsPushProviderInterface $recipientPushProvider
 	 */
-	public function setRecipientsPushProvider(RecipientsProviderPushInterface $recipientsPushProvider);
+	public function setRecipientsPushProvider(RecipientsPushProviderInterface $recipientsPushProvider);
 }
 ?>
