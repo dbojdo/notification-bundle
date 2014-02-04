@@ -53,5 +53,17 @@ interface NotificationConfigInterface {
 	 * @param RecipientsPushProviderInterface $recipientPushProvider
 	 */
 	public function setRecipientsPushProvider(RecipientsPushProviderInterface $recipientsPushProvider);
+
+	/**
+	 *
+	 * @return \Swift_Mailer
+	 */
+	public function getMailer();
+	
+	/**
+	 *
+	 * @param \Swift_Mailer $mailer
+	 */
+	public function setMailer(\Swift_Mailer $mailer);
 }
 ?>

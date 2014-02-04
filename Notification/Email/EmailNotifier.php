@@ -14,19 +14,14 @@ use Webit\Bundle\NotificationBundle\Notification\NotificationInterface;
 use Webit\Bundle\NotificationBundle\Notification\NotifierInterface;
 
 class EmailNotifier extends ContainerAware implements NotifierInterface {
-	/**
-   * @var \Swift_Mailer
-	 */
-	protected $mailer;
-	
+    	
 	/**
 	 * 
 	 * @var MessageFactoryInterface
 	 */
 	protected $messageFactory;
 	
-	public function __construct(\Swift_Mailer $mailer, MessageFactoryInterface $messageFactory) {
-		$this->mailer = $mailer;
+	public function __construct(MessageFactoryInterface $messageFactory) {
 		$this->messageFactory = $messageFactory;
 	}
 	
@@ -34,7 +29,7 @@ class EmailNotifier extends ContainerAware implements NotifierInterface {
 		$registry = $this->container->get('webit_notification.registry');
 		$config = $registry->getNotification($notification->getType());
 		$recipientsProvider = $config->getRecipientsProvider();
-
+        
 		$recipients = $recipientsProvider->getRecipients($notification);
 		foreach($recipients as $recipient) {
 			$event = new EventNotification($notification, $recipient, 'email');
@@ -53,7 +48,7 @@ class EmailNotifier extends ContainerAware implements NotifierInterface {
 			);
 			
 			try {
-				$result = $this->mailer->send($message);
+				$result = $config->getMailer()->send($message);
 			} catch(\Exception $e) {
 				$result = false;
 			}

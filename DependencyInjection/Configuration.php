@@ -32,6 +32,7 @@ class Configuration implements ConfigurationInterface
 									->scalarNode('interval')->end()
 									->scalarNode('recipients_provider')->end()
 									->scalarNode('recipients_push_provider')->defaultNull()->end()
+									->scalarNode('mailer')->defaultValue('mailer')->end()
 									->arrayNode('active')
 											->children()
 												->scalarNode('sms')->defaultFalse()->end()

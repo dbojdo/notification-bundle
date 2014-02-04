@@ -25,6 +25,11 @@ class NotificationRegistryFactory extends ContainerAware  {
 			    $config->setRecipientsPushProvider($provider);
 			}
 			
+			if(key_exists('mailer', $arNotification)) {
+			    $mailer = $this->container->get($arNotification['mailer']);
+			    $config->setMailer($mailer);
+			}
+			
 			if(key_exists('active', $arNotification)) {
 				foreach($arNotification['active'] as $media=>$active) {
 					$config->setActive($media, $active);

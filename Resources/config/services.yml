@@ -43,7 +43,7 @@ services:
             - [setContainer, [@service_container]]
     webit_notification.email_notifier:
         class: %webit_notification.email_notifier.class%
-        arguments: [@mailer,@webit_notification.email_message_factory]
+        arguments: [@webit_notification.email_message_factory]
         calls:
             - [setContainer, [@service_container]]
     webit_notification.push_notifier:
