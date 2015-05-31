@@ -11,26 +11,26 @@ class NotificationRegistryFactory extends ContainerAware  {
 		$arNotifications = $this->container->getParameter('webit_notification.notifications');
 		foreach($arNotifications as $type=>$arNotification) {
 			$config = new NotificationConfig($type);
-			if(key_exists('interval', $arNotification)) {
+			if(isset($arNotification['interval'])) {
 				$config->setInterval($arNotification['interval']);
 			}
 			
-			if(key_exists('recipients_provider', $arNotification)) {
+			if(isset($arNotification['recipients_provider'])) {
 				$provider = $this->container->get($arNotification['recipients_provider']);
 				$config->setRecipientsProvider($provider);	
 			}
 			
-			if(key_exists('recipients_push_provider', $arNotification)) {
+			if(isset($arNotification['recipients_push_provider'])) {
 			    $provider = $this->container->get($arNotification['recipients_push_provider']);
 			    $config->setRecipientsPushProvider($provider);
 			}
 			
-			if(key_exists('mailer', $arNotification)) {
+			if(isset($arNotification['mailer'])) {
 			    $mailer = $this->container->get($arNotification['mailer']);
 			    $config->setMailer($mailer);
 			}
 			
-			if(key_exists('active', $arNotification)) {
+			if(isset($arNotification['active'])) {
 				foreach($arNotification['active'] as $media=>$active) {
 					$config->setActive($media, $active);
 				}
