@@ -62,4 +62,3 @@ class PostSendListener extends ContainerAware {
 		return null;
 	}
 }
-?>

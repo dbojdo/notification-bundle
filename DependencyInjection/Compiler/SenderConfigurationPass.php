@@ -9,4 +9,3 @@ class SenderConfigurationPass implements CompilerPassInterface {
 		$container->getDefinition('webit_notification.sms_notifier')->addArgument($container->getDefinition($container->getParameter('webit_notification.sms_sender')));
 	}
 }
-?>

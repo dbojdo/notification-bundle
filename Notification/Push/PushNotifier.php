@@ -63,4 +63,3 @@ class PushNotifier extends ContainerAware implements NotifierInterface {
 	    return $response;
 	}
 }
-?>

@@ -45,4 +45,3 @@ class ToggleStatusCommand extends ContainerAwareCommand {
 		
 	}
 }
-?>

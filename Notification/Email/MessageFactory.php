@@ -12,4 +12,3 @@ class MessageFactory extends ContainerAware implements MessageFactoryInterface {
 		return $message;
 	}
 }
-?>

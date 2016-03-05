@@ -98,4 +98,3 @@ class NotificationLog {
 		$this->hash = $hash;
 	}
 }
-?>

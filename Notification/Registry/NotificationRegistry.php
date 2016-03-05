@@ -25,4 +25,3 @@ class NotificationRegistry {
 		return null;
 	}
 }
-?>

@@ -35,4 +35,3 @@ class Notifier extends ContainerAware implements NotifierInterface {
 		}
 	}
 }
-?>

@@ -42,4 +42,3 @@ class NotificationRegistryFactory extends ContainerAware  {
 		return $registry;
 	}
 }
-?>

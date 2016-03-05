@@ -136,7 +136,3 @@ class NotificationConfig implements NotificationConfigInterface
         $this->mailer = $mailer;
     }
 }
-?>
-
-
-

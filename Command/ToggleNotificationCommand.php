@@ -42,4 +42,3 @@ class ToggleNotificationCommand extends ContainerAwareCommand {
 		}		
 	}
 }
-?>

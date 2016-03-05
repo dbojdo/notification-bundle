@@ -17,9 +17,8 @@
 		"webit/sms-common": "dev-master"
 	},
 	"autoload": {
-		"psr-0": {
-			"Webit\\Bundle\\NotificationBundle" : ""
+		"psr-4": {
+			"Webit\\Bundle\\NotificationBundle\\" : ""
 		}
-	},
-	"target-dir" : "Webit/Bundle/NotificationBundle"
+	}
 }

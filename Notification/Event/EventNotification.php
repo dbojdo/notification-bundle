@@ -95,4 +95,3 @@ class EventNotification extends Event {
 		$this->result = $result;
 	}
 }
-?>

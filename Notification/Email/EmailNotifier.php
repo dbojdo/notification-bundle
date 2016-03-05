@@ -68,4 +68,3 @@ class EmailNotifier extends ContainerAware implements NotifierInterface {
 		return $body;
 	}
 }
-?>
