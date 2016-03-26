@@ -1,3 +1,0 @@
-webit_notification_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: WebitNotificationBundle:Default:index }

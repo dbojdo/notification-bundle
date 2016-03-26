@@ -1,14 +1,15 @@
 <?php
 namespace Webit\Bundle\NotificationBundle\Notification;
 
-interface NotificationInterface {
-	/**
-	 * @return string
-	 */
-	public function getType();
+interface NotificationInterface
+{
+    /**
+     * @return string
+     */
+    public function getType();
 
-	/**
-	 * @return string
-	 */
-	public function getHash();
+    /**
+     * @return string
+     */
+    public function getHash();
 }

@@ -57,13 +57,13 @@ class NotificationConfig implements NotificationConfigInterface
         if (key_exists($media, $this->active)) {
             return $this->active[$media];
         }
-        
+
         return false;
     }
 
     public function setActive($media, $active)
     {
-        $this->active[$media] = (bool) $active;
+        $this->active[$media] = (bool)$active;
     }
 
     public function getType()
@@ -88,7 +88,7 @@ class NotificationConfig implements NotificationConfigInterface
 
     /**
      *
-     * @var RecipientsProviderInterface
+     * @return RecipientProviderInterface
      */
     public function getRecipientsProvider()
     {
@@ -111,7 +111,7 @@ class NotificationConfig implements NotificationConfigInterface
 
     /**
      *
-     * @param RecipientsPushProviderInterface $recipientPushProvider            
+     * @param RecipientsPushProviderInterface $recipientsPushProvider
      */
     public function setRecipientsPushProvider(RecipientsPushProviderInterface $recipientsPushProvider)
     {
@@ -129,7 +129,7 @@ class NotificationConfig implements NotificationConfigInterface
 
     /**
      *
-     * @param \Swift_Mailer $mailer            
+     * @param \Swift_Mailer $mailer
      */
     public function setMailer(\Swift_Mailer $mailer)
     {

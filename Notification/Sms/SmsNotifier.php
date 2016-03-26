@@ -1,7 +1,8 @@
 <?php
 namespace Webit\Bundle\NotificationBundle\Notification\Sms;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Webit\Api\SmsCommon\Message\Sms;
 use Webit\Api\SmsCommon\Sender\SmsSenderInterface;
 use Webit\Bundle\NotificationBundle\Notification\Event\EventNotification;
@@ -10,9 +11,17 @@ use Webit\Bundle\NotificationBundle\Notification\NotificationInterface;
 use Webit\Bundle\NotificationBundle\Notification\NotifierInterface;
 use Webit\Bundle\NotificationBundle\Notification\RecipientInterface;
 
-class SmsNotifier extends ContainerAware implements NotifierInterface
+class SmsNotifier implements NotifierInterface, ContainerAwareInterface
 {
+    /**
+     * @var SmsSenderInterface
+     */
     protected $sender;
+
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
 
     public function __construct(SmsSenderInterface $sender)
     {
@@ -58,5 +67,15 @@ class SmsNotifier extends ContainerAware implements NotifierInterface
         );
 
         return $body;
+    }
+
+    /**
+     * Sets the container.
+     *
+     * @param ContainerInterface|null $container A ContainerInterface instance or null
+     */
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
     }
 }

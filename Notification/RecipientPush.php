@@ -55,7 +55,7 @@ class RecipientPush extends Recipient implements RecipientPushInterface
 
     /**
      *
-     * @param string $method            
+     * @param string $method
      */
     public function setMethod($method)
     {
@@ -73,7 +73,7 @@ class RecipientPush extends Recipient implements RecipientPushInterface
 
     /**
      *
-     * @param string $url            
+     * @param string $url
      */
     public function setUrl($url)
     {
@@ -91,7 +91,7 @@ class RecipientPush extends Recipient implements RecipientPushInterface
 
     /**
      *
-     * @param array $queryParams            
+     * @param array $queryParams
      */
     public function setQueryParams(array $queryParams)
     {
@@ -100,7 +100,7 @@ class RecipientPush extends Recipient implements RecipientPushInterface
 
     /**
      *
-     * @param string $queryParam            
+     * @param string $queryParam
      */
     public function getQueryParam($queryParam)
     {
@@ -109,8 +109,8 @@ class RecipientPush extends Recipient implements RecipientPushInterface
 
     /**
      *
-     * @param string $queryParam            
-     * @param string $value            
+     * @param string $queryParam
+     * @param string $value
      */
     public function setQueryParam($queryParam, $value)
     {
@@ -128,7 +128,7 @@ class RecipientPush extends Recipient implements RecipientPushInterface
 
     /**
      *
-     * @param array $params            
+     * @param array $params
      */
     public function setParams(array $params)
     {
@@ -137,7 +137,7 @@ class RecipientPush extends Recipient implements RecipientPushInterface
 
     /**
      *
-     * @param string $param            
+     * @param string $param
      */
     public function getParam($param)
     {
@@ -146,8 +146,8 @@ class RecipientPush extends Recipient implements RecipientPushInterface
 
     /**
      *
-     * @param string $param            
-     * @param string $value            
+     * @param string $param
+     * @param string $value
      */
     public function setParam($param, $value)
     {

@@ -4,12 +4,14 @@ namespace Webit\Bundle\NotificationBundle\Notification\Sms;
 use Webit\Api\SmsCommon\Sender\SmsSenderInterface;
 use Webit\Api\SmsCommon\Message\SmsInterface;
 
-class PhantomSmsSender implements SmsSenderInterface {
+class PhantomSmsSender implements SmsSenderInterface
+{
     /**
-     * 
+     *
      * @param SmsInterface $sms
      */
-    public function sendSms(SmsInterface $sms) {
+    public function sendSms(SmsInterface $sms)
+    {
         // I'm doing nothing. I'm phantom, man!    
     }
 }

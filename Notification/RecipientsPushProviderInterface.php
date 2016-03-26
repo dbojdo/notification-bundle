@@ -1,11 +1,12 @@
 <?php
 namespace Webit\Bundle\NotificationBundle\Notification;
 
-interface RecipientsPushProviderInterface {
+interface RecipientsPushProviderInterface
+{
 
-	/**
-	 * @param NotificationInterface $notification
-	 * @return RecipientPushInterface[]
-	 */
-	public function getRecipients(NotificationInterface $notification);
+    /**
+     * @param NotificationInterface $notification
+     * @return RecipientPushInterface[]
+     */
+    public function getRecipients(NotificationInterface $notification);
 }
