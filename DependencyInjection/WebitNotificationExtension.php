@@ -33,7 +33,7 @@ class WebitNotificationExtension extends Extension
         $loader->load('services.yml');
 
         $this->completeToggleDefinition($container, $config['toggle']);
-        $this->completeEmailFactoryMessageDefinition($container, $container['email_fallback_message_factory']);
+        $this->completeEmailFactoryMessageDefinition($container, $config['email_fallback_message_factory']);
     }
 
     private function completeToggleDefinition(ContainerBuilder $container, array $toggleConfig)
