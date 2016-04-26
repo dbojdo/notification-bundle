@@ -21,7 +21,7 @@ class ToggleLock
      */
     protected $toggleDate;
 
-    public function __construct($notificationStatus = false, \DateTime $toggleDate = null)
+    public function __construct($notificationStatus = true, \DateTime $toggleDate = null)
     {
         $this->notificationStatus = $notificationStatus;
         $this->toggleDate = $toggleDate;

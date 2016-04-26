@@ -32,7 +32,7 @@ class Notifier implements NotifierInterface, ContainerAwareInterface
     {
         $toggle = $this->container->get('webit_notification.toggle_service');
 
-        return ! $toggle->isEnabled();
+        return $toggle->isEnabled();
     }
 
     public function setRouterContext($host, $scheme = 'http')
