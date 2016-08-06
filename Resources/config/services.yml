@@ -27,9 +27,7 @@ services:
 
     webit_notification.registry:
         class: %webit_notification.registry.class%
-        factory:
-            service: webit_notification.registry_factory
-            method: get
+        factory: ["@webit_notification.registry_factory", get]
         arguments: [%webit_notification.registry.class%]
 
     webit_notification.notifier:
