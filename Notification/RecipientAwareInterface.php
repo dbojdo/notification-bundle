@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 interface RecipientAwareInterface
 {
     /**
-     * @return ArrayCollection
+     * @return RecipientInterface[]|ArrayCollection
      */
     public function getRecipients();
 
