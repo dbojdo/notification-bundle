@@ -43,7 +43,7 @@ class PostSendListener implements ContainerAwareInterface
 
     private function flushQueue()
     {
-        if ($this->container->isScopeActive('request')) {
+        if (!$this->container->get('request_stack')->getCurrentRequest()) {
             return;
         }
 

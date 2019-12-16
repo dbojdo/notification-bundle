@@ -38,7 +38,7 @@ class Notifier implements NotifierInterface, ContainerAwareInterface
     public function setRouterContext($host, $scheme = 'http')
     {
         // cli
-        if (!$this->container->isScopeActive('request')) {
+        if (!$this->container->get('request_stack')->getCurrentRequest()) {
             $context = $this->container->get('router')->getContext();
             $context->setHost($host);
             $context->setScheme($scheme);
